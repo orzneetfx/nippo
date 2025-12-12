@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日報アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>日報アプリ</h1>
+    <p>日付と業務内容を記録して、ブラウザだけで管理できます。</p>
+  </header>
+
+  <main class="app-container">
+    <section class="card" aria-label="日報入力フォーム">
+      <div class="card-header">
+        <h2>日報を入力する</h2>
+      </div>
+      <form id="report-form" class="form-grid">
+        <label class="field">
+          <span>日付</span>
+          <input type="date" id="date" name="date" required>
+        </label>
+        <label class="field">
+          <span>今日やったこと</span>
+          <textarea id="today" name="today" rows="3" required placeholder="完了したタスクや対応内容"></textarea>
+        </label>
+        <label class="field">
+          <span>明日やること</span>
+          <textarea id="tomorrow" name="tomorrow" rows="3" required placeholder="予定しているタスク"></textarea>
+        </label>
+        <label class="field">
+          <span>困っていること</span>
+          <textarea id="blockers" name="blockers" rows="2" placeholder="詰まっていることや相談事項"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="primary">保存する</button>
+          <button type="reset" class="ghost">クリア</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" aria-label="日報一覧">
+      <div class="card-header">
+        <div>
+          <h2>日報一覧</h2>
+          <p class="muted">保存済みの日報をクリックすると詳細を表示します。</p>
+        </div>
+        <button id="clear-data" class="danger" type="button">すべて削除</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>今日やったこと</th>
+              <th>明日やること</th>
+            </tr>
+          </thead>
+          <tbody id="report-list">
+            <tr class="empty-row">
+              <td colspan="3">まだ日報がありません。上のフォームから追加してください。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" aria-label="日報詳細">
+      <div class="card-header">
+        <h2>日報詳細</h2>
+      </div>
+      <div id="report-detail" class="detail">
+        <p class="muted">日報を選択すると詳細がここに表示されます。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>データはブラウザのローカルストレージに保存されます。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
